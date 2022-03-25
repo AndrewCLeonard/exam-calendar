@@ -1,25 +1,20 @@
 const { Schema, model, Types } = require("mongoose");
 
-const TeacherSchema = new Schema({
-	teacherID: {
+const SchoolSchema = new Schema({
+	schoolID: {
 		type: Number,
 		required: true,
 	},
-	teacherFirstName: {
+	schoolName: {
 		type: String,
 		required: true,
 	},
-	teacherLastName: {
+	schoolType: {
 		type: String,
 		required: true,
 	},
-	teacherEmail: {
+	schoolDescription: {
 		type: String,
 		required: true,
 	},
-	// fk school_id needed
 });
-
-const Teacher = model("Teacher", TeacherSchema);
-
-module.exports = Teacher;

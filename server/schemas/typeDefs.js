@@ -22,7 +22,7 @@ const typeDefs = gql`
     
 
     type User {
-        _id: ID
+        _id: ID!
         user_id: String
         first_name: String
         last_name: String
@@ -42,9 +42,9 @@ const typeDefs = gql`
 
     type Mutation {
         login(email: String!, password: String!): Auth
-        addUser(user_id: String!, email: String!, password: String!): Auth
+        addUser(user_id: String!, email: String!, password: String!, _id: ID): Auth
         addSection(section_name: String!): Section
-        addAssessment(section_id: ID!, assessment_id: String!): Section
+        addAssessment(_id: ID!, assessment_id: String!): Assessment
     }
 
     type Auth {

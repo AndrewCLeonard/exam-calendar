@@ -15,8 +15,8 @@ const resolvers = {
             }
             throw new AuthenticationError('Not logged in');
         },
-        section: async (parent, { username }) => {
-            const params = username ? { username }: {};
+        section: async (parent, { user_id }) => {
+            const params = user_id ? { user_id }: {};
             return Section.find(params)
         },
         section: async (parent, { _id }) => {
@@ -44,7 +44,7 @@ const resolvers = {
 
             return { token, user };
         },
-        login: async (parent, { email, password }) => {
+        login: async (parent, { User: {email, password }}) => {
             const user = await User.findOne({ email });
             if (!user) {
                 throw new AuthenticationError('Incorrect Credentials');
@@ -55,7 +55,7 @@ const resolvers = {
                 throw new AuthenticationError('Incorrect Credentials');
             }
             const token = signToken(user);
-            return { token, user};
+            return { token, user };
         },
         addSection: async (parent, args, context) => {
             if (context.user) {

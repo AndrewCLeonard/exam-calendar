@@ -21,7 +21,7 @@ db.once('open', async () => {
   const createdUsers = await User.collection.insertMany(userData);
 
 
-  // create thoughts
+  // create sections
   let createdSections = [];
   for (let i = 0; i < 100; i += 1) {
     const sectionText = faker.datatype.number({ min: 10, max: 100, precision: 0 });
@@ -31,7 +31,7 @@ db.once('open', async () => {
     createdSection.push(createdSection);
   }
 
-  // create reactions
+  // create assessment
   for (let i = 0; i < 100; i += 1) {
     const reactionBody = faker.lorem.words(Math.round(Math.random() * 20) + 1);
 
